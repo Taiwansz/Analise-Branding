@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>André da Empada &mdash; Guia Visual & Estudo de Branding</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-black: #08040A;
+      --bg-surface: #120A17;
+      --bg-card: #1A0F21;
+      --bordeaux-noble: #890000;
+      --bordeaux-deep: #5A0000;
+      --gold-champagne: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-gradient: linear-gradient(135deg, #E6CA65 0%, #D4AF37 50%, #99731C 100%);
+      --text-main: #FFFFFF;
+      --text-muted: #A5A0AE;
+      --border-fine: rgba(212, 175, 55, 0.2);
+      --border-white: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-black);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-black) 100%);
+      padding: 70px 30px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-fine);
+      position: relative;
+    }
+
+    .header-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+
+    header h1 em {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold-light);
+    }
+
+    header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    nav.quick-nav {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav.quick-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav.quick-nav a {
+      display: block;
+      padding: 18px 24px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.quick-nav a:hover {
+      color: var(--gold-champagne);
+      border-bottom-color: var(--gold-champagne);
+    }
+
+    main {
+      max-width: 1300px;
+      margin: 60px auto 0;
+      padding: 0 40px;
+    }
+
+    section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-white);
+      padding: 50px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-num {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border-white);
+      padding-bottom: 20px;
+    }
+
+    /* Cores Grid */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .palette-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-white);
+      overflow: hidden;
+    }
+
+    .swatch {
+      height: 120px;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .palette-meta {
+      padding: 20px;
+    }
+
+    .palette-meta h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .palette-code {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .palette-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Galeria de Ativos Visuais */
+    .asset-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+    }
+
+    .asset-frame {
+      border: 1px solid var(--border-white);
+      background: var(--bg-card);
+      overflow: hidden;
+    }
+
+    .asset-frame img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .asset-caption {
+      padding: 25px;
+    }
+
+    .asset-caption h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .asset-caption p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Matriz SWOT Nobre */
+    .swot-grid-luxury {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .swot-column {
+      background: var(--bg-card);
+      border: 1px solid var(--border-white);
+      padding: 35px;
+    }
+
+    .swot-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-white);
+      padding-bottom: 12px;
+    }
+
+    .swot-header-row h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--gold-light);
+    }
+
+    .swot-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .swot-column li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: flex;
+      gap: 10px;
+    }
+
+    .swot-column li::before {
+      content: '&mdash;';
+      color: var(--gold-champagne);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--border-white);
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 30px 20px; }
+      .swot-grid-luxury { grid-template-columns: 1fr; }
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="header-tag">Auditoria & Sistema de Identidade</span>
+    <h1>André da Empada &mdash; <em>Haute Confeitaria</em></h1>
+    <p>Estudo estratégico de elevação de marca, psicologia cromática e matriz de posicionamento gastronômico &bull; Indaiatuba, SP</p>
+  </header>
+
+  <nav class="quick-nav">
+    <ul>
+      <li><a href="#cores">Paleta Cromática</a></li>
+      <li><a href="#semiotica">Semiótica & Mascote</a></li>
+      <li><a href="#ativos">Ativos Visuais</a></li>
+      <li><a href="#swot">Matriz SWOT</a></li>
+      <li><a href="#plano">Roteiro Estratégico</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- 1. Paleta Cromática -->
+    <section id="cores">
+      <span class="section-num">01 / Identidade Cromática</span>
+      <h2 class="section-title">Harmonia Cromática & Códigos Técnicos</h2>
+      
+      <div class="palette-grid">
+        
+        <div class="palette-card">
+          <div class="swatch" style="background-color: #890000; color:#FFF;">Bordô Nobre</div>
+          <div class="palette-meta">
+            <h4>Bordô Carmim</h4>
+            <span class="palette-code">HEX: #890000</span>
+            <span class="palette-code">RGB: 137, 0, 0</span>
+            <span class="palette-code">CMYK: 20, 100, 100, 25</span>
+            <p class="palette-desc">Cor identitária histórica. Estimula o apetite contemplativo, remetendo a receitas de forno e tradição.</p>
+          </div>
+        </div>
+
+        <div class="palette-card">
+          <div class="swatch" style="background-color: #D4AF37; color:#111;">Ouro Crosta</div>
+          <div class="palette-meta">
+            <h4>Ouro Champanhe</h4>
+            <span class="palette-code">HEX: #D4AF37</span>
+            <span class="palette-code">RGB: 212, 175, 55</span>
+            <span class="palette-code">CMYK: 15, 28, 85, 12</span>
+            <p class="palette-desc">A cor da massa folhada perfeitamente assada com gema pincelada. Traduz valor e requinte.</p>
+          </div>
+        </div>
+
+        <div class="palette-card">
+          <div class="swatch" style="background-color: #C68A4C; color:#FFF;">Ocre Fornadas</div>
+          <div class="palette-meta">
+            <h4>Ocre Amanteigado</h4>
+            <span class="palette-code">HEX: #C68A4C</span>
+            <span class="palette-code">RGB: 198, 138, 76</span>
+            <span class="palette-code">CMYK: 20, 45, 80, 5</span>
+            <p class="palette-desc">A tonalidade das bordas douradas e do trigo tostado. Calor e aroma de forno a lenha.</p>
+          </div>
+        </div>
+
+        <div class="palette-card">
+          <div class="swatch" style="background-color: #08040A; color:#FFF; border: 1px solid #333;">Obsidian Velvet</div>
+          <div class="palette-meta">
+            <h4>Preto Ébano</h4>
+            <span class="palette-code">HEX: #08040A</span>
+            <span class="palette-code">RGB: 8, 4, 10</span>
+            <span class="palette-code">CMYK: 75, 70, 65, 85</span>
+            <p class="palette-desc">Fundo nobre para fotografia culinária em ardósia, destacando o dourado das empadas.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. Semiótica & Evolução do Mascote -->
+    <section id="semiotica">
+      <span class="section-num">02 / Semiótica & Slogan</span>
+      <h2 class="section-title">Análise do Personagem & O Bordão "Fala Comigo!"</h2>
+      
+      <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:40px; align-items:center;">
+        <div style="text-align:center; padding:20px; background:var(--bg-card); border:1px solid var(--border-white);">
+          <img src="assets/logo_original.jpg" alt="Logo Original André da Empada" style="max-height:220px; border-radius:50%; border:2px solid var(--border-fine);">
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:12px; letter-spacing:0.1em; text-transform:uppercase;">Selo Original de Balcão &bull; CECAP</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Playfair Display', serif; font-size:1.6rem; color:#FFF; margin-bottom:14px;">A Força do Bordão Afetivo</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.8; margin-bottom:18px;">
+            O bordão <em>"Fala Comigo!"</em> transcende a função de slogan comercial: é um dispositivo de acolhimento genuíno. Enquanto a concorrência investe em menus frios, o André estabelece uma conexão imediata de amizade e confiança.
+          </p>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.8;">
+            A proposta de evolução não substitui esse patrimônio, mas o coroa: transforma o traço informal em uma assinatura de alta gastronomia, aplicando-o em caligrafia nobre em envelopes térmicos e embalagens rígidas seladas com cera.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Ativos Visuais -->
+    <section id="ativos">
+      <span class="section-num">03 / Ativos Visuais Gastronômicos</span>
+      <h2 class="section-title">Fotografia & Conceito de Boutique</h2>
+
+      <div class="asset-showcase-grid">
+        <div class="asset-frame">
+          <img src="assets/empada_gourmet_macro.jpg" alt="Empada Artesanal Aberta">
+          <div class="asset-caption">
+            <h4>A Anatomia da Massa Podre Nobre</h4>
+            <p>Crosta dourada finamente folhada, recheio úmido e farto de frango com requeijão cremoso legítimo. Fotografia em ardósia escura com iluminação lateral.</p>
+          </div>
+        </div>
+
+        <div class="asset-frame">
+          <img src="assets/empada_boutique_ambience.jpg" alt="Ambiente Boutique de Empadas">
+          <div class="asset-caption">
+            <h4>O Conceito "Bistrô de Empadas"</h4>
+            <p>Evolução arquitetônica da unidade CECAP: vitrine térmica em vidro curvo com iluminação âmbar, marcenaria bordô nobre e balcão em mármore escovado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Matriz SWOT -->
+    <section id="swot">
+      <span class="section-num">04 / Diagnóstico Estratégico</span>
+      <h2 class="section-title">Matriz SWOT de Reposicionamento</h2>
+
+      <div class="swot-grid-luxury">
+        <div class="swot-column">
+          <div class="swot-header-row">
+            <h3>Forças Internas</h3>
+            <span style="font-size:0.75rem; color:var(--gold-champagne); letter-spacing:0.2em;">STRENGTHS</span>
+          </div>
+          <ul>
+            <li>Massa artesanal amanteigada de sabor e textura amplamente elogiados.</li>
+            <li>Recheios fartos sem utilização de espessantes químicos industriais.</li>
+            <li>Bordão icônico ("Fala Comigo!") de retenção instantânea na memória popular.</li>
+            <li>Ponto comercial consolidado em artéria de grande fluxo (Av. Geraldo Hackmann).</li>
+          </ul>
+        </div>
+
+        <div class="swot-column">
+          <div class="swot-header-row">
+            <h3>Fraquezas a Mitigar</h3>
+            <span style="font-size:0.75rem; color:#E57373; letter-spacing:0.2em;">WEAKNESSES</span>
+          </div>
+          <ul>
+            <li>Identidade visual anterior com apelo de gibi infantil, limitando o ticket médio.</li>
+            <li>Embalagens convencionais de papel fino que não preservam a temperatura nobre.</li>
+            <li>Dispersão de produtos no cardápio online (excesso de itens não relacionados à empada).</li>
+            <li>Ausência de caixas rígidas de presente para o segmento corporativo.</li>
+          </ul>
+        </div>
+
+        <div class="swot-column">
+          <div class="swot-header-row">
+            <h3>Oportunidades de Mercado</h3>
+            <span style="font-size:0.75rem; color:#81C784; letter-spacing:0.2em;">OPPORTUNITIES</span>
+          </div>
+          <ul>
+            <li>Lançamento da "Box Privée" para condomínios fechados e escritórios de Indaiatuba.</li>
+            <li>Combinações gastronômicas de empadas com cafés especiais e vinhos finos.</li>
+            <li>Expansão do raio de entrega para a vizinha cidade de Salto.</li>
+            <li>Consolidação da marca como a "Maison da Empada" do interior de São Paulo.</li>
+          </ul>
+        </div>
+
+        <div class="swot-column">
+          <div class="swot-header-row">
+            <h3>Ameaças do Setor</h3>
+            <span style="font-size:0.75rem; color:#FFB74D; letter-spacing:0.2em;">THREATS</span>
+          </div>
+          <ul>
+            <li>Concorrência de salgados congelados industriais vendidos a preços predatórios.</li>
+            <li>Flutuações no custo de matérias-primas nobres (manteiga, queijo, aves e palmito).</li>
+            <li>Entrada de franquias padronizadas de shopping na região metropolitana.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Roteiro Estratégico -->
+    <section id="plano">
+      <span class="section-num">05 / Roteiro de Ação</span>
+      <h2 class="section-title">Diretrizes para os Próximos 12 Meses</h2>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:25px;">
+        <div style="padding:25px; background:var(--bg-card); border:1px solid var(--border-white);">
+          <span style="color:var(--gold-champagne); font-weight:700; font-size:0.75rem; letter-spacing:0.2em;">FASE I</span>
+          <h4 style="font-family:'Playfair Display', serif; color:#FFF; margin:10px 0;">Redesenho Editorial</h4>
+          <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">Uniformização tipográfica em Playfair e Montserrat, eliminando ruídos cartunescos em todas as plataformas.</p>
+        </div>
+
+        <div style="padding:25px; background:var(--bg-card); border:1px solid var(--border-white);">
+          <span style="color:var(--gold-champagne); font-weight:700; font-size:0.75rem; letter-spacing:0.2em;">FASE II</span>
+          <h4 style="font-family:'Playfair Display', serif; color:#FFF; margin:10px 0;">Embalagens Térmicas</h4>
+          <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">Introdução de caixas rígidas com berço interno e lacre de garantia com o monograma "A".</p>
+        </div>
+
+        <div style="padding:25px; background:var(--bg-card); border:1px solid var(--border-white);">
+          <span style="color:var(--gold-champagne); font-weight:700; font-size:0.75rem; letter-spacing:0.2em;">FASE III</span>
+          <h4 style="font-family:'Playfair Display', serif; color:#FFF; margin:10px 0;">Seleção Privée</h4>
+          <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">Criação da linha nobre de camarão rosa, queijo brie e cogumelos, elevando o ticket médio.</p>
+        </div>
+
+        <div style="padding:25px; background:var(--bg-card); border:1px solid var(--border-white);">
+          <span style="color:var(--gold-champagne); font-weight:700; font-size:0.75rem; letter-spacing:0.2em;">FASE IV</span>
+          <h4 style="font-family:'Playfair Display', serif; color:#FFF; margin:10px 0;">Boutique CECAP</h4>
+          <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">Reforma da loja física com vitrine iluminada a 2700K e cafeteria de cafés especiais.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    André da Empada &bull; Dossiê de Branding &bull; Indaiatuba &ndash; SP &bull; 2026
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Sorvetão | Dossiê de Branding & Identidade de Marca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-yellow: #FFE300;
+      --primary-yellow-dark: #F7C600;
+      --deep-purple: #48236B;
+      --accent-orange: #FF7F00;
+      --vibrant-cyan: #29A9E1;
+      --accent-magenta: #E91E63;
+      --pure-white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #212529;
+      --border-gray: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--deep-purple) 0%, #2A0F45 100%);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      position: relative;
+      border-bottom: 8px solid var(--primary-yellow);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      background: white;
+      padding: 20px 40px;
+      border-radius: 24px;
+      display: inline-block;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      border: 4px solid var(--primary-yellow);
+    }
+
+    .logo-container img {
+      max-height: 110px;
+      width: auto;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      color: var(--primary-yellow);
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-gray);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav li a {
+      display: block;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    nav li a:hover {
+      color: var(--deep-purple);
+      border-bottom-color: var(--accent-orange);
+      background-color: #FFFDF0;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-gray);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--light-gray);
+      padding-bottom: 15px;
+    }
+
+    .section-title .number {
+      background: var(--deep-purple);
+      color: var(--primary-yellow);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.7rem;
+      color: var(--deep-purple);
+      font-weight: 700;
+    }
+
+    /* Grid Paleta */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .color-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-gray);
+      background: white;
+      transition: transform 0.2s;
+    }
+
+    .color-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .color-swatch {
+      height: 120px;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+      color: white;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .color-info {
+      padding: 16px;
+      font-size: 0.88rem;
+    }
+
+    .color-info h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--deep-purple);
+    }
+
+    .color-code {
+      font-family: monospace;
+      background: #F1F5F9;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    /* Imagens e Galeria */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-gray);
+      background: #FFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 16px;
+    }
+
+    .gallery-caption h4 {
+      color: var(--deep-purple);
+      margin-bottom: 5px;
+      font-size: 1.05rem;
+    }
+
+    .gallery-caption p {
+      font-size: 0.88rem;
+      color: #64748B;
+    }
+
+    /* Cards de Informação */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .info-box {
+      background: #F8FAFC;
+      border-left: 5px solid var(--accent-orange);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .info-box h3 {
+      color: var(--deep-purple);
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .info-box p {
+      font-size: 0.92rem;
+      color: #475569;
+    }
+
+    /* SWOT Grid */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .swot-card {
+      padding: 22px;
+      border-radius: 14px;
+      color: white;
+    }
+
+    .swot-strengths { background: #1B5E20; }
+    .swot-weaknesses { background: #B71C1C; }
+    .swot-opportunities { background: #01579B; }
+    .swot-threats { background: #E65100; }
+
+    .swot-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .swot-card ul {
+      list-style-position: inside;
+      font-size: 0.88rem;
+    }
+
+    .swot-card li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #94A3B8;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      section { padding: 25px; }
+      nav ul { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="assets/logo_oficial.png" alt="O Sorvetão Logo Oficial">
+      </div>
+      <h1>ESTUDO DE BRANDING & IDENTIDADE VISUAL</h1>
+      <p>Análise Estratégica Completa da Rede O Sorvetão (Salto e Indaiatuba – SP)</p>
+      <div class="badge-pill">Tradição Desde 1989 &bull; Família, Alegria & Fartura</div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#historia">1. História & DNA</a></li>
+      <li><a href="#logo">2. Logotipo & Mascote</a></li>
+      <li><a href="#cores">3. Paleta Cromática</a></li>
+      <li><a href="#produtos">4. Embalagens & Produtos</a></li>
+      <li><a href="#retail">5. Experiência de Loja</a></li>
+      <li><a href="#swot">6. Matriz SWOT</a></li>
+      <li><a href="#estrategia">7. Recomendações</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- 1. História & DNA -->
+    <section id="historia">
+      <div class="section-title">
+        <div class="number">01</div>
+        <h2>História, Storytelling & Propósito de Marca</h2>
+      </div>
+      <p>Fundada em <strong>1989</strong> no bairro Jardim Morada do Sol (Indaiatuba), a marca nasceu do trabalho incansável do casal <strong>Carmo Martins</strong> e <strong>Sara Lopes</strong>. Enquanto Dona Sara cuidava da produção artesanal e do ponto físico, Seu Carmo percorria as ruas com um carrinho de picolé anunciado por uma buzina estridente, que se tornou marco sonoro da reunião das famílias.</p>
+      
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>Missão de Marca</h3>
+          <p>"Trazer alegria para a vida das pessoas criando momentos especiais!"</p>
+        </div>
+        <div class="info-box" style="border-left-color: var(--deep-purple);">
+          <h3>Arquétipos Dominantes</h3>
+          <p><strong>O Bobo da Corte (60%):</strong> Humor, brincadeira, risadas e espontaneidade.<br>
+          <strong>O Cara Comum (40%):</strong> Pertencimento, generosidade e preço acessível.</p>
+        </div>
+        <div class="info-box" style="border-left-color: var(--vibrant-cyan);">
+          <h3>Evolução Geracional</h3>
+          <p>Sob a gestão de <strong>Douglas Martins</strong>, a rede se modernizou em parceria com estúdios de design (Fancio & Picchi) e marketing (Bípede Digital), consolidando mais de 9 lojas próprias e ampla revenda.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Logotipo & Mascote -->
+    <section id="logo">
+      <div class="section-title">
+        <div class="number">02</div>
+        <h2>Análise Semiótica do Logotipo e Mascote</h2>
+      </div>
+      <div class="gallery-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 25px;">
+        <div class="gallery-item" style="display:flex; align-items:center; justify-content:center; padding:20px; background:#FAFAFA;">
+          <img src="assets/logo_oficial.png" style="object-fit:contain; max-height:180px;" alt="Logo O Sorvetão">
+        </div>
+        <div class="gallery-item" style="padding:20px;">
+          <h4 style="color:var(--deep-purple); margin-bottom:10px;">Decomposição do Wordmark:</h4>
+          <ul style="padding-left:20px; font-size:0.9rem; color:#475569;">
+            <li><strong>Lettering Bubble:</strong> Formas infladas, sem serifa, sugerindo a cremosidade do sorvete e a inocência dos quadrinhos infantis.</li>
+            <li><strong>Arco Ascendente:</strong> Dinamismo ótico da esquerda para a direita, comunicando entusiasmo, celebração e vitalidade.</li>
+            <li><strong>Tridimensionalidade (3D):</strong> Face amarela solar, extrusão volumétrica em roxo profundo e contorno em ciano.</li>
+            <li><strong>Slogan Cursivo:</strong> "é muito melhor!" em caligrafia descontraída e assertiva.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box" style="border-left-color: var(--primary-yellow-dark);">
+        <h3>O Mascote "Sorriso Amarelo"</h3>
+        <p>Um dos ativos mais memoráveis da marca é o emoticon amarelo em arco aberto, com dentes brancos expressivos e olhos esbugalhados. Ele ativa o reflexo de espelhamento psicológico nas crianças, desarmando tensões e instalando um ambiente de pura diversão logo na entrada das lojas.</p>
+      </div>
+    </section>
+
+    <!-- 3. Paleta Cromática -->
+    <section id="cores">
+      <div class="section-title">
+        <div class="number">03</div>
+        <h2>Psicologia das Cores & Códigos Técnicos</h2>
+      </div>
+      <p>A paleta cromática d'O Sorvetão equilibra o calor que gera o impulso de compra (Amarelo e Laranja) com o frescor refrescante do frio (Roxo e Ciano).</p>
+
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: #FFE300; color:#333;">Amarelo Solar</div>
+          <div class="color-info">
+            <h4>Amarelo Ouro</h4>
+            <div class="color-code">HEX: #FFE300</div><br>
+            <div class="color-code">RGB: 255, 227, 0</div>
+            <p style="margin-top:6px; font-size:0.82rem; color:#64748B;">Cor de maior luminosidade à distância. Desperta calor, sol e fome.</p>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: #48236B;">Roxo Profundo</div>
+          <div class="color-info">
+            <h4>Roxo / Violeta</h4>
+            <div class="color-code">HEX: #48236B</div><br>
+            <div class="color-code">RGB: 72, 35, 107</div>
+            <p style="margin-top:6px; font-size:0.82rem; color:#64748B;">Complementar do amarelo. Representa magia, fantasia, açaí e nobreza.</p>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: #FF7F00;">Laranja Tangerina</div>
+          <div class="color-info">
+            <h4>Laranja Vital</h4>
+            <div class="color-code">HEX: #FF7F00</div><br>
+            <div class="color-code">RGB: 255, 127, 0</div>
+            <p style="margin-top:6px; font-size:0.82rem; color:#64748B;">Cor de acolhimento e entusiasmo. Pintura dominante das paredes de loja.</p>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: #29A9E1;">Azul Ciano</div>
+          <div class="color-info">
+            <h4>Ciano Refresco</h4>
+            <div class="color-code">HEX: #29A9E1</div><br>
+            <div class="color-code">RGB: 41, 169, 225</div>
+            <p style="margin-top:6px; font-size:0.82rem; color:#64748B;">Alívio térmico. Sensação de gelo, água cristalina e céu aberto de verão.</p>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: #E91E63;">Rosa Magenta</div>
+          <div class="color-info">
+            <h4>Rosa Framboesa</h4>
+            <div class="color-code">HEX: #E91E63</div><br>
+            <div class="color-code">RGB: 233, 30, 99</div>
+            <p style="margin-top:6px; font-size:0.82rem; color:#64748B;">Acentuação açucarada, remetendo a caldas, morangos e atmosfera festiva.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Embalagens & Produtos -->
+    <section id="produtos">
+      <div class="section-title">
+        <div class="number">04</div>
+        <h2>Portfólio de Produtos & Design de Embalagens</h2>
+      </div>
+      <p>A arquitetura de produtos utiliza com excelência o sub-branding com nomes sonoros e embalagens de alto apelo de apetite:</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/embalagem_picole_magmax.jpg" alt="Picolé Magmax">
+          <div class="gallery-caption">
+            <h4>Linha MAGMAX Crocante</h4>
+            <p>Segmento indulgente. Embalagem em marrom cacau com ondas de chocolate e tipografia clássica com casquinha triturada.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/embalagem_picole_frutao.jpg" alt="Picolé Frutão">
+          <div class="gallery-caption">
+            <h4>Linha FRUTÃO (Frutas Reais)</h4>
+            <p>Fundo rústico de ripas de madeira, tipografia bold estêncil e fotografia de fruta fresca em alta definição. Refrescância pura.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/embalagem_picole_galacrem.jpg" alt="Picolé Galacrem">
+          <div class="gallery-caption">
+            <h4>Linha GALACREM (Leite Condensado)</h4>
+            <p>Ondas lácteas de leite fresco, colher derramando leite condensado cremoso e faixas de azul royal criando contraste sensorial.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/embalagem_pote_1l.jpg" alt="Pote 1L">
+          <div class="gallery-caption">
+            <h4>Potes de Consumo Familiar (1L a 5L)</h4>
+            <p>Potes transparentes que exibem a textura do sorvete artesanal, cintas listradas e tampas de fácil empilhamento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Experiência de Loja -->
+    <section id="retail">
+      <div class="section-title">
+        <div class="number">05</div>
+        <h2>Retail Design & Experiência de Loja (Salto e Indaiatuba)</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/loja_fachada_arquitetura.jpg" alt="Fachada de Loja">
+          <div class="gallery-caption">
+            <h4>Fachada Contemporânea e Aberta</h4>
+            <p>Painéis de concreto, vidros do piso ao teto, toldos metálicos pretos, mesas amarelas com ombrelones laranjas ao ar livre.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/loja_interior_playground.jpg" alt="Interior com Playground">
+          <div class="gallery-caption">
+            <h4>O Playground como Diferencial Estratégico</h4>
+            <p>Área kids integrada, grama sintética e brinquedão. Retém a família na loja por 40 a 60 minutos e multiplica a fidelidade.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/loja_interior_freezers.jpg" alt="Balcões de Freezers">
+          <div class="gallery-caption">
+            <h4>Ilhas Centrais de Autosserviço</h4>
+            <p>Freezers envelopados com poás coloridos, balcões de confeitos e caldas ao alcance das mãos do cliente.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/campanha_clientao_pattern.jpg" alt="Programa Clientão e Pattern">
+          <div class="gallery-caption">
+            <h4>Programa Clientão & Pattern de Doodles</h4>
+            <p>Sistema de cashback fidelizador acompanhado por uma rica malha gráfica de ilustrações autorais sobre fundo laranja.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Matriz SWOT -->
+    <section id="swot">
+      <div class="section-title">
+        <div class="number">06</div>
+        <h2>Análise SWOT da Marca O Sorvetão</h2>
+      </div>
+
+      <div class="swot-grid">
+        <div class="swot-card swot-strengths">
+          <h3>FORÇAS (S)</h3>
+          <ul>
+            <li>Mais de 35 anos de história afetiva regional.</li>
+            <li>Playground infantil gratuito nas principais unidades.</li>
+            <li>Excelente custo-benefício e fartura (potes 5L).</li>
+            <li>Fábrica própria e ampla capilaridade local.</li>
+            <li>Programa de cashback "Clientão" ativo.</li>
+          </ul>
+        </div>
+
+        <div class="swot-card swot-weaknesses">
+          <h3>FRAQUEZAS (W)</h3>
+          <ul>
+            <li>Falta de um ícone digital oficial ultra simplificado.</li>
+            <li>Variação de padrão arquitetônico entre lojas antigas e novas.</li>
+            <li>Percepção popular que limita venda de produtos de altíssimo valor agregado.</li>
+            <li>Filas e lentidão no caixa em picos de calor.</li>
+          </ul>
+        </div>
+
+        <div class="swot-card swot-opportunities">
+          <h3>OPORTUNIDADES (O)</h3>
+          <ul>
+            <li>Criação da linha retrô "Origens 1989".</li>
+            <li>Ativação do mascote em eventos escolares e datas infantis.</li>
+            <li>Padronização do modelo de franquias.</li>
+            <li>Crescimento do delivery programado de potes para churrascos e eventos.</li>
+          </ul>
+        </div>
+
+        <div class="swot-card swot-threats">
+          <h3>AMEAÇAS (T)</h3>
+          <ul>
+            <li>Concorrência ultra agressiva de preço de atacado (Oggi, Eskimó).</li>
+            <li>Migração de público jovem para gelaterias artesanais italianas.</li>
+            <li>Flutuação no preço de insumos (leite em pó, gordura, cacau).</li>
+            <li>Sazonalidade natural nos meses frios de inverno.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Recomendações Estratégicas -->
+    <section id="estrategia">
+      <div class="section-title">
+        <div class="number">07</div>
+        <h2>Plano de Ação & Recomendações Estratégicas</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-box" style="border-left-color: var(--primary-yellow-dark);">
+          <h3>1. Logo Responsivo (Design Flat)</h3>
+          <p>Criar uma versão plana e limpa do logotipo, preservando o contorno e as cores, para aplicação perfeita em favicons, apps e telas de smartwatch.</p>
+        </div>
+        <div class="info-box" style="border-left-color: var(--accent-orange);">
+          <h3>2. Batismo Oficial do Mascote</h3>
+          <p>Lançar um concurso comunitário nas escolas de Salto e Indaiatuba para batizar o mascote amarelo sorridente, criando fantasia viva para eventos de fins de semana.</p>
+        </div>
+        <div class="info-box" style="border-left-color: var(--deep-purple);">
+          <h3>3. Espaço Cenográfico "Carrinho 1989"</h3>
+          <p>Instalar nas lojas conceito uma réplica do carrinho de picolé pioneiro do Seu Carmo com sua buzina original como ponto "instagramável" para fotos de família.</p>
+        </div>
+        <div class="info-box" style="border-left-color: var(--vibrant-cyan);">
+          <h3>4. Totem de Autoatendimento Express</h3>
+          <p>Permitir que clientes que compram apenas picolés ou potes de 5L paguem direto no cartão/PIX, desafogando as filas das balanças de sorvete por quilo.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Dossiê de Branding Estratégico &bull; O Sorvetão (Salto & Indaiatuba) &bull; Gerado em Setembro de 2026</p>
+    <p style="margin-top:5px; font-size:0.8rem;">Desenvolvido com base em pesquisa documental, levantamento de campo, semiótica de marca e psicologia cromática aplicada.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Sorvetão &mdash; Haute Glacerie &bull; Salto e Indaiatuba</title>
+  
+  <link rel="icon" href="assets/logo_oficial.png" type="image/png">
+
+  <!-- Google Fonts Luxury: Playfair Display + Cormorant Garamond + Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-black: #06030A;
+      --bg-surface: #0E0716;
+      --bg-surface-elevated: #150B21;
+      --gold-champagne: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-gradient: linear-gradient(135deg, #E6CA65 0%, #D4AF37 50%, #99731C 100%);
+      --gold-subtle-glow: rgba(212, 175, 55, 0.18);
+      --purple-deep: #241138;
+      --purple-accent: #3A1859;
+      --text-main: #FFFFFF;
+      --text-muted: #9E9AA7;
+      --text-dim: #656070;
+      --border-fine: rgba(212, 175, 55, 0.18);
+      --border-white: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-black);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-black);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Linha de Progresso Superior Ultra-Fina */
+    #progress-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--gold-gradient);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.08s linear;
+    }
+
+    /* HEADER MINIMALISTA LUXURY */
+    header.lux-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 900;
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6, 3, 10, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-white);
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+    }
+
+    .brand-mark img {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.3));
+    }
+
+    .brand-subtext {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border-left: 1px solid var(--border-fine);
+      padding-left: 18px;
+    }
+
+    nav.lux-nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav.lux-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav.lux-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--gold-champagne);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav.lux-nav a:hover {
+      color: #FFFFFF;
+    }
+
+    nav.lux-nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-lux-primary {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold-champagne);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-lux-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gold-gradient);
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-lux-primary:hover {
+      color: var(--bg-black);
+      border-color: transparent;
+    }
+
+    .btn-lux-primary:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* ============================================================ */
+    /* SEÇÃO 1: HERO SCROLL-DRIVEN VIDEO (SEM CARDS CENTRAIS)       */
+    /* ============================================================ */
+    #hero-track {
+      position: relative;
+      height: 600vh;
+      background: var(--bg-black);
+    }
+
+    .sticky-viewport {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #cinematic-canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) brightness(0.92);
+    }
+
+    /* Degradês Sutis de Transição e Profundidade */
+    .hero-veil-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(6, 3, 10, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-veil-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(to top, rgba(6, 3, 10, 1) 0%, rgba(6, 3, 10, 0.7) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 200px rgba(6, 3, 10, 0.9);
+      pointer-events: none;
+    }
+
+    /* ============================================================ */
+    /* NARRATIVA EDITORIAL LATERAL / INFERIOR (DISCRETA E ELEGANTE) */
+    /* ============================================================ */
+    .hero-narrative-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 80px 70px 80px;
+    }
+
+    .narrative-block {
+      max-width: 680px;
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      position: absolute;
+      bottom: 70px;
+      left: 80px;
+    }
+
+    .narrative-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .act-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .act-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #FFFFFF;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .act-title em {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold-light);
+    }
+
+    .act-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #D1D5DB;
+      max-width: 580px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    /* HUD EDITORIAL NO CANTO INFERIOR DIREITO */
+    .hero-telemetry {
+      position: absolute;
+      bottom: 70px;
+      right: 80px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+      pointer-events: auto;
+    }
+
+    .telemetry-indices {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+    }
+
+    .telemetry-track {
+      width: 160px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .telemetry-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--gold-champagne);
+      transition: width 0.05s linear;
+    }
+
+    .telemetry-hint {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .telemetry-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .btn-scrub-mode {
+      background: transparent;
+      border: 1px solid var(--border-white);
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-scrub-mode:hover, .btn-scrub-mode.active {
+      border-color: var(--gold-champagne);
+      color: var(--gold-light);
+    }
+
+    /* LOADER MINIMALISTA */
+    #loader-curtain {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-black);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease;
+    }
+
+    .loader-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .loader-line-track {
+      width: 200px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .loader-line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--gold-champagne);
+      transition: width 0.1s linear;
+    }
+
+    .loader-percent {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      margin-top: 14px;
+    }
+
+    /* ============================================================ */
+    /* SEÇÕES DE CONTEÚDO EDITORIAL LUXURY                          */
+    /* ============================================================ */
+    .lux-section {
+      padding: 140px 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-headline em {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold-light);
+    }
+
+    .section-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 780px;
+      margin-bottom: 70px;
+    }
+
+    /* MANIFESTO EDITORIAL EM DUAS COLUNAS */
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 90px;
+      align-items: center;
+      padding: 60px 0;
+      border-top: 1px solid var(--border-white);
+      border-bottom: 1px solid var(--border-white);
+    }
+
+    .manifesto-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      line-height: 1.45;
+      color: #FFFFFF;
+      font-style: italic;
+      position: relative;
+    }
+
+    .manifesto-quote::before {
+      content: '“';
+      position: absolute;
+      top: -30px;
+      left: -40px;
+      font-size: 5rem;
+      color: var(--border-fine);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+
+    .manifesto-details {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .manifesto-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 8px;
+    }
+
+    .manifesto-item p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* COLEÇÃO DE SABORES (ESTILO ALTA CONFEITARIA) */
+    .collection-catalog {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .catalog-piece {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-white);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .catalog-piece:hover {
+      border-color: var(--border-fine);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--gold-subtle-glow);
+    }
+
+    .piece-visual {
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+      background: #040206;
+    }
+
+    .piece-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: saturate(0.95);
+    }
+
+    .catalog-piece:hover .piece-visual img {
+      transform: scale(1.06);
+      filter: saturate(1.05);
+    }
+
+    .piece-origin-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(6, 3, 10, 0.85);
+      border: 1px solid var(--border-fine);
+      padding: 6px 14px;
+    }
+
+    .piece-details {
+      padding: 35px 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .piece-family {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 8px;
+    }
+
+    .piece-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .piece-notes {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .piece-divider {
+      height: 1px;
+      background: var(--border-white);
+      margin-bottom: 20px;
+    }
+
+    .piece-action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .piece-format {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .btn-piece-link {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-piece-link:hover {
+      color: #FFFFFF;
+    }
+
+    /* SEÇÃO DE BOUTIQUES & FLASGHIPS (SALTO & INDAIATUBA) */
+    .boutique-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+
+    .boutique-entry {
+      border: 1px solid var(--border-white);
+      background: var(--bg-surface);
+      padding: 45px 40px;
+      transition: border-color 0.3s;
+      position: relative;
+    }
+
+    .boutique-entry:hover {
+      border-color: var(--border-fine);
+    }
+
+    .boutique-city {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 12px;
+    }
+
+    .boutique-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+
+    .boutique-address {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .boutique-hours {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+    }
+
+    .boutique-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .boutique-pill {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border-white);
+      padding: 5px 12px;
+    }
+
+    .boutique-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-boutique-nav {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-fine);
+      padding-bottom: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-boutique-nav:hover {
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+
+    /* SEÇÃO DE CONCIERGE & PRIVILÈGE */
+    .privilege-wrapper {
+      background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--purple-deep) 100%);
+      border: 1px solid var(--border-fine);
+      padding: 80px 70px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .privilege-wrapper::after {
+      content: '';
+      position: absolute;
+      right: -100px;
+      bottom: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .privilege-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #FFFFFF;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .privilege-content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: #E2E8F0;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .privilege-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .privilege-list li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .privilege-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold-champagne);
+      display: inline-block;
+    }
+
+    /* FOOTER DISCRETO */
+    footer.lux-footer {
+      background: #030105;
+      border-top: 1px solid var(--border-white);
+      padding: 90px 80px 40px;
+    }
+
+    .footer-columns {
+      max-width: 1400px;
+      margin: 0 auto 70px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-col h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-champagne);
+      margin-bottom: 24px;
+    }
+
+    .footer-col p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 320px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold-champagne);
+    }
+
+    .footer-bottom-row {
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-white);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 1024px) {
+      header.lux-header { padding: 20px 30px; }
+      nav.lux-nav { display: none; }
+      .lux-section { padding: 90px 30px; }
+      .manifesto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .collection-catalog { grid-template-columns: 1fr; }
+      .boutique-grid { grid-template-columns: 1fr; }
+      .privilege-wrapper { grid-template-columns: 1fr; padding: 40px 30px; }
+      .footer-columns { grid-template-columns: 1fr 1fr; }
+      .hero-narrative-container { padding: 0 30px 60px 30px; }
+      .narrative-block { left: 30px; bottom: 60px; }
+      .hero-telemetry { right: 30px; bottom: 60px; }
+      .act-title { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Linha de Progresso do Scroll -->
+  <div id="progress-line"></div>
+
+  <!-- Header Fixo Minimalista -->
+  <header class="lux-header">
+    <a href="#" class="brand-mark">
+      <img src="assets/logo_oficial.png" alt="O Sorvetão">
+      <span class="brand-subtext">Haute Glacerie &bull; Desde 1989</span>
+    </a>
+
+    <nav class="lux-nav">
+      <a href="#hero-track">A Coleção</a>
+      <a href="#manifesto">A Filosofia</a>
+      <a href="#boutiques">Boutiques</a>
+      <a href="#privilege">Privilège</a>
+    </nav>
+
+    <div class="header-cta-group">
+      <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-lux-primary">Concierge Delivery</a>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- HERO SCROLL TRACK (VIDEO SCRUBBING LIMPO E ELEGANTE)        -->
+  <!-- ============================================================ -->
+  <section id="hero-track">
+    <div class="sticky-viewport">
+      
+      <!-- Canvas de Alta Resolução -->
+      <canvas id="cinematic-canvas"></canvas>
+
+      <!-- Véus de Atmosfera -->
+      <div class="hero-veil-top"></div>
+      <div class="hero-veil-bottom"></div>
+      <div class="hero-vignette"></div>
+
+      <!-- Curtain de Carregamento Inicial -->
+      <div id="loader-curtain">
+        <div class="loader-brand">O Sorvetão</div>
+        <div class="loader-line-track">
+          <div class="loader-line-fill" id="loader-fill"></div>
+        </div>
+        <div class="loader-percent" id="loader-pct">CALIBRANDO IMERSÃO &bull; 0%</div>
+      </div>
+
+      <!-- Narrativa Editorial Lateral / Inferior -->
+      <div class="hero-narrative-container">
+        
+        <!-- Fase 1: Frames 0 - 55 -->
+        <div class="narrative-block" id="block-1">
+          <span class="act-number">I &mdash; A Revelação</span>
+          <h1 class="act-title">O Silêncio da <em>Caixa Negra</em></h1>
+          <p class="act-description">O vapor gélido antecipa o momento em que a tradição encontra o ápice da indulgência. Uma ode ao cacau nobre e à paciência do preparo artesanal.</p>
+        </div>
+
+        <!-- Fase 2: Frames 56 - 115 -->
+        <div class="narrative-block" id="block-2">
+          <span class="act-number">II &mdash; A Matéria</span>
+          <h2 class="act-title">A Alquimia da <em>Cremosite</em></h2>
+          <p class="act-description">Leite fresco de pastos paulistas em lenta maturação, alcançando uma textura acetinada que se dissolve com elegância e peso ao paladar.</p>
+        </div>
+
+        <!-- Fase 3: Frames 116 - 175 -->
+        <div class="narrative-block" id="block-3">
+          <span class="act-number">III &mdash; A Escultura</span>
+          <h2 class="act-title">O Choque Térmico <em>Perfeito</em></h2>
+          <p class="act-description">Esculpidas na temperatura precisa para reter os óleos essenciais do chocolate e o frescor mineral. Um equilíbrio onde densidade e leveza coexistem.</p>
+        </div>
+
+        <!-- Fase 4: Frames 176 - 240 -->
+        <div class="narrative-block" id="block-4">
+          <span class="act-number">IV &mdash; O Legado</span>
+          <h2 class="act-title">Desde 1989. <em>Muito Melhor.</em></h2>
+          <p class="act-description">A essência que conquistou Salto e Indaiatuba, agora em sua expressão mais sublime. Uma experiência disponível em nossas boutiques e sob encomenda.</p>
+        </div>
+
+      </div>
+
+      <!-- Telemetria & Controle Minimalista no Canto Direito -->
+      <div class="hero-telemetry">
+        <div class="telemetry-indices" id="telemetry-frame">F &bull; 000 / 240</div>
+        <div class="telemetry-track">
+          <div class="telemetry-thumb" id="telemetry-bar"></div>
+        </div>
+        <div class="telemetry-hint">Role para avançar</div>
+        
+        <div class="telemetry-controls">
+          <button class="btn-scrub-mode" id="btn-toggle-play" onclick="togglePlayState()">Reproduzir</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SEÇÃO 2: O MANIFESTO EDITORIAL (A FILOSOFIA)                -->
+  <!-- ============================================================ -->
+  <section class="lux-section" id="manifesto">
+    <span class="section-eyebrow">A Filosofia</span>
+    <h2 class="section-headline">Não criamos apenas gelato.<br><em>Cultivamos celebrações.</em></h2>
+    <p class="section-lead">Desde as primeiras receitas formuladas artesanalmente em 1989, O Sorvetão preserva um compromisso inegociável com a matéria-prima e com o ritual compartilhado do sabor.</p>
+
+    <div class="manifesto-grid">
+      <div class="manifesto-quote">
+        “O luxo reside na autenticidade do ingrediente e na generosidade do momento presente.”
+      </div>
+
+      <div class="manifesto-details">
+        <div class="manifesto-item">
+          <h4>Origem Pura</h4>
+          <p>Trabalhamos exclusivamente com polpas naturais de frutas colhidas no auge da estação e bases lácteas sem atalhos químicos.</p>
+        </div>
+        <div class="manifesto-item">
+          <h4>Tempo & Mestria</h4>
+          <p>Cada lote respeita o tempo de repouso térmico necessário para que a emulsão atinja o ponto máximo de cremosidade.</p>
+        </div>
+        <div class="manifesto-item">
+          <h4>Vínculo Regional</h4>
+          <p>Presentes no cotidiano de Salto e Indaiatuba há quase quatro décadas, transformando tardes simples em memórias duradouras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SEÇÃO 3: A COLEÇÃO PRIVÉE (CATÁLOGO DE ALTO PADRÃO)         -->
+  <!-- ============================================================ -->
+  <section class="lux-section" id="colecao">
+    <span class="section-eyebrow">A Coleção</span>
+    <h2 class="section-headline">Criações de <em>Assinatura</em></h2>
+    <p class="section-lead">Uma seleção rigorosa que equilibra o apelo indulgente do cacau, a doçura afetiva das sobremesas clássicas e o frescor límpido da natureza brasileira.</p>
+
+    <div class="collection-catalog">
+      
+      <!-- Peça 1: Magmax -->
+      <article class="catalog-piece">
+        <div class="piece-visual">
+          <img src="assets/embalagem_picole_magmax.jpg" alt="Magmax Crocante">
+          <span class="piece-origin-badge">Edição Crocante</span>
+        </div>
+        <div class="piece-details">
+          <div>
+            <span class="piece-family">Linha Indulgente</span>
+            <h3 class="piece-name">Magmax Noir</h3>
+            <p class="piece-notes">Coração denso de chocolate aveludado envolvido por uma carapaça rígida de cacau com lâminas tostadas de castanha.</p>
+          </div>
+          <div>
+            <div class="piece-divider"></div>
+            <div class="piece-action-row">
+              <span class="piece-format">Picolé Individual &bull; 60g</span>
+              <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-piece-link">Solicitar &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Peça 2: Galacrem -->
+      <article class="catalog-piece">
+        <div class="piece-visual">
+          <img src="assets/embalagem_picole_galacrem.jpg" alt="Galacrem Leite Condensado">
+          <span class="piece-origin-badge">Receita de Família</span>
+        </div>
+        <div class="piece-details">
+          <div>
+            <span class="piece-family">Linha Láctea</span>
+            <h3 class="piece-name">Galacrem Pure</h3>
+            <p class="piece-notes">A nobreza do leite condensado em redução precisa. Um perfil aveludado que evoca nostalgia e puro conforto sensorial.</p>
+          </div>
+          <div>
+            <div class="piece-divider"></div>
+            <div class="piece-action-row">
+              <span class="piece-format">Picolé Individual &bull; 60g</span>
+              <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-piece-link">Solicitar &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Peça 3: Frutão -->
+      <article class="catalog-piece">
+        <div class="piece-visual">
+          <img src="assets/embalagem_picole_frutao.jpg" alt="Frutão Abacaxi">
+          <span class="piece-origin-badge">Colheita Natural</span>
+        </div>
+        <div class="piece-details">
+          <div>
+            <span class="piece-family">Linha Botânica</span>
+            <h3 class="piece-name">Frutão Tropical</h3>
+            <p class="piece-notes">Polpa integral de abacaxi maduro com acidez equilibrada. O contraste refrescante projetado para os dias tórridos de verão.</p>
+          </div>
+          <div>
+            <div class="piece-divider"></div>
+            <div class="piece-action-row">
+              <span class="piece-format">Picolé de Fruta &bull; 60g</span>
+              <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-piece-link">Solicitar &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SEÇÃO 4: AS BOUTIQUES (SALTO & INDAIATUBA)                  -->
+  <!-- ============================================================ -->
+  <section class="lux-section" id="boutiques">
+    <span class="section-eyebrow">Endereços Oficiais</span>
+    <h2 class="section-headline">Nossas <em>Boutiques</em></h2>
+    <p class="section-lead">Espaços generosos projetados para acolher a família com iluminação natural, amplos terraços e áreas dedicadas ao convívio comunitário.</p>
+
+    <div class="boutique-grid">
+      
+      <!-- Salto: Jd das Nações -->
+      <div class="boutique-entry">
+        <span class="boutique-city">Salto &bull; São Paulo</span>
+        <h3 class="boutique-title">Boutique Jardim das Nações</h3>
+        <p class="boutique-address">Rua Floriano Peixoto, 3087</p>
+        <p class="boutique-hours">Atendimento diário &bull; 09h00 às 23h00</p>
+        <div class="boutique-features">
+          <span class="boutique-pill">Terraço Externo</span>
+          <span class="boutique-pill">Espaço Família</span>
+          <span class="boutique-pill">Estacionamento</span>
+        </div>
+        <div class="boutique-actions">
+          <a href="https://maps.google.com/?q=Rua+Floriano+Peixoto+3087+Salto+SP" target="_blank" class="btn-boutique-nav">Localização &rarr;</a>
+          <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-boutique-nav">Concierge Delivery &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Salto: Jd Santa Cruz -->
+      <div class="boutique-entry">
+        <span class="boutique-city">Salto &bull; São Paulo</span>
+        <h3 class="boutique-title">Boutique Jardim Santa Cruz</h3>
+        <p class="boutique-address">Avenida Marechal Rondon, 2100</p>
+        <p class="boutique-hours">Atendimento diário &bull; 09h00 às 23h00</p>
+        <div class="boutique-features">
+          <span class="boutique-pill">Autoatendimento</span>
+          <span class="boutique-pill">Retirada Rápida</span>
+          <span class="boutique-pill">Acessibilidade</span>
+        </div>
+        <div class="boutique-actions">
+          <a href="https://maps.google.com/?q=Av+Marechal+Rondon+2100+Salto+SP" target="_blank" class="btn-boutique-nav">Localização &rarr;</a>
+          <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-boutique-nav">Concierge Delivery &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Indaiatuba: Parque Ecológico -->
+      <div class="boutique-entry">
+        <span class="boutique-city">Indaiatuba &bull; São Paulo</span>
+        <h3 class="boutique-title">Flagship Parque Ecológico</h3>
+        <p class="boutique-address">Av. Eng. Fábio Roberto Barnabé, 3828</p>
+        <p class="boutique-hours">Atendimento diário &bull; 09h00 às 23h00</p>
+        <div class="boutique-features">
+          <span class="boutique-pill">Vista Panorâmica</span>
+          <span class="boutique-pill">Playground Integrado</span>
+          <span class="boutique-pill">Buffet por Peso</span>
+        </div>
+        <div class="boutique-actions">
+          <a href="https://maps.google.com/?q=Av+Eng+Fabio+Roberto+Barnabe+3828+Indaiatuba+SP" target="_blank" class="btn-boutique-nav">Localização &rarr;</a>
+          <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-boutique-nav">Concierge Delivery &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Indaiatuba: Morada do Sol -->
+      <div class="boutique-entry">
+        <span class="boutique-city">Indaiatuba &bull; São Paulo</span>
+        <h3 class="boutique-title">Matriz Histórica Morada do Sol</h3>
+        <p class="boutique-address">Rua Antônio Angelino Rossi, 432</p>
+        <p class="boutique-hours">Atendimento diário &bull; 09h00 às 23h00</p>
+        <div class="boutique-features">
+          <span class="boutique-pill">O Berço de 1989</span>
+          <span class="boutique-pill">Tradição de Bairro</span>
+          <span class="boutique-pill">Atendimento Afetivo</span>
+        </div>
+        <div class="boutique-actions">
+          <a href="https://maps.google.com/?q=Rua+Antonio+Angelino+Rossi+432+Indaiatuba+SP" target="_blank" class="btn-boutique-nav">Localização &rarr;</a>
+          <a href="https://deliverydireto.com.br/osorvetao" target="_blank" class="btn-boutique-nav">Concierge Delivery &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SEÇÃO 5: PRIVILÈGE & CONCIERGE                              -->
+  <!-- ============================================================ -->
+  <section class="lux-section" id="privilege" style="padding-top:20px;">
+    <div class="privilege-wrapper">
+      <div class="privilege-content">
+        <span class="section-eyebrow">Programa de Vantagens</span>
+        <h3>O Sorvetão Privilège</h3>
+        <p>Um círculo exclusivo para aqueles que apreciam a excelência da nossa confeitaria gelada. Acumule créditos em cada aquisição e tenha acesso prioritário a lançamentos e sabores sazonais.</p>
+        <a href="https://fidelidade.osorvetao.com.br" target="_blank" class="btn-lux-primary">Acessar Círculo Privilège</a>
+      </div>
+
+      <div>
+        <ul class="privilege-list">
+          <li>Créditos de fidelidade convertidos em resgate direto nas boutiques</li>
+          <li>Reserva de sabores de edição limitada para recepções e eventos</li>
+          <li>Atendimento dedicado e prioritário via canal direto de concierge</li>
+          <li>Acesso antecipado aos lançamentos da linha de verão</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER SÓBRIO & MINIMALISTA                                 -->
+  <!-- ============================================================ -->
+  <footer class="lux-footer">
+    <div class="footer-columns">
+      
+      <div class="footer-col">
+        <img src="assets/logo_oficial.png" alt="O Sorvetão" style="height:36px; margin-bottom:20px; filter:brightness(0.9);">
+        <p>Fundado em 1989. O patrimônio artesanal de gelados do interior paulista, lapidando tradição, afeto e excelência gastronômica.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Boutiques Oficiais</h5>
+        <ul>
+          <li><a href="#boutiques">Salto &mdash; Jd. das Nações</a></li>
+          <li><a href="#boutiques">Salto &mdash; Jd. Santa Cruz</a></li>
+          <li><a href="#boutiques">Indaiatuba &mdash; Parque Ecológico</a></li>
+          <li><a href="#boutiques">Indaiatuba &mdash; Morada do Sol</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>A Coleção</h5>
+        <ul>
+          <li><a href="#colecao">Magmax Noir</a></li>
+          <li><a href="#colecao">Galacrem Pure</a></li>
+          <li><a href="#colecao">Frutão Botânico</a></li>
+          <li><a href="#colecao">Potes de Conservação 1L a 5L</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Canais de Atendimento</h5>
+        <ul>
+          <li><a href="https://deliverydireto.com.br/osorvetao" target="_blank">Concierge Delivery Online</a></li>
+          <li><a href="https://fidelidade.osorvetao.com.br" target="_blank">Portal Privilège</a></li>
+          <li><a href="https://www.instagram.com/osorvetaosorvetes" target="_blank">Instagram Oficial</a></li>
+          <li><a href="https://www.osorvetao.com.br" target="_blank">osorvetao.com.br</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-row">
+      <span>&copy; 1989 &ndash; 2026 O Sorvetão. Todos os direitos reservados.</span>
+      <span>Salto &bull; Indaiatuba &bull; São Paulo</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT: ENGINE ULTRA SUAVE DE CONTROLE DOS 240 FRAMES    -->
+  <!-- ============================================================ -->
+  <script>
+    const TOTAL_FRAMES = 240;
+    const FRAME_DIR = 'frames/';
+    const canvas = document.getElementById('cinematic-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Elementos de Telemetria e Progresso
+    const progressLine = document.getElementById('progress-line');
+    const heroTrack = document.getElementById('hero-track');
+    const telemetryFrame = document.getElementById('telemetry-frame');
+    const telemetryBar = document.getElementById('telemetry-bar');
+    const btnTogglePlay = document.getElementById('btn-toggle-play');
+
+    // Blocos Narrativos Editoriais
+    const block1 = document.getElementById('block-1');
+    const block2 = document.getElementById('block-2');
+    const block3 = document.getElementById('block-3');
+    const block4 = document.getElementById('block-4');
+
+    // Estados
+    const frames = [];
+    let loadedCount = 0;
+    let currentFrameIndex = 0;
+    let targetFrameIndex = 0;
+    let isPlaying = false;
+    let playTimer = null;
+
+    // Redimensionamento sem perda de proporção
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      paintFrame();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function getFramePath(idx) {
+      const padded = String(idx).padStart(3, '0');
+      return `${FRAME_DIR}frame_${padded}.webp`;
+    }
+
+    function drawImageCover(img) {
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const iw = img.naturalWidth;
+      const ih = img.naturalHeight;
+
+      const canvasRatio = cw / ch;
+      const imageRatio = iw / ih;
+
+      let renderW, renderH, offsetX, offsetY;
+
+      if (canvasRatio > imageRatio) {
+        renderW = cw;
+        renderH = cw / imageRatio;
+        offsetX = 0;
+        offsetY = (ch - renderH) / 2;
+      } else {
+        renderH = ch;
+        renderW = ch * imageRatio;
+        offsetX = (cw - renderW) / 2;
+        offsetY = 0;
+      }
+
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+    }
+
+    function paintFrame() {
+      const idx = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(currentFrameIndex)));
+      const img = frames[idx];
+      if (img && img.complete) {
+        drawImageCover(img);
+      }
+
+      // Atualiza Telemetria
+      if (telemetryFrame) {
+        telemetryFrame.innerText = `F &bull; ${String(idx).padStart(3, '0')} / 240`;
+      }
+      if (telemetryBar) {
+        const pct = ((idx) / (TOTAL_FRAMES - 1)) * 100;
+        telemetryBar.style.width = `${pct}%`;
+      }
+
+      // Atualiza os Textos Editoriais
+      updateNarrativeBlocks(idx);
+    }
+
+    function updateNarrativeBlocks(frame) {
+      block1.classList.toggle('visible', frame >= 0 && frame <= 55);
+      block2.classList.toggle('visible', frame > 55 && frame <= 115);
+      block3.classList.toggle('visible', frame > 115 && frame <= 175);
+      block4.classList.toggle('visible', frame > 175 && frame <= 239);
+    }
+
+    // Pré-carregamento Silencioso
+    function preloadFrames() {
+      const curtain = document.getElementById('loader-curtain');
+      const fill = document.getElementById('loader-fill');
+      const pct = document.getElementById('loader-pct');
+
+      for (let i = 0; i < TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.src = getFramePath(i);
+
+        img.onload = () => {
+          loadedCount++;
+          const percent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+          if (fill) fill.style.width = `${percent}%`;
+          if (pct) pct.innerText = `CALIBRANDO IMERSÃO &bull; ${percent}%`;
+
+          if (i === 0) {
+            resizeCanvas();
+            paintFrame();
+          }
+
+          if (loadedCount === TOTAL_FRAMES) {
+            setTimeout(() => {
+              if (curtain) {
+                curtain.style.opacity = '0';
+                setTimeout(() => curtain.style.display = 'none', 800);
+              }
+            }, 300);
+          }
+        };
+
+        img.onerror = () => {
+          loadedCount++;
+        };
+
+        frames.push(img);
+      }
+    }
+
+    // LERP Damping Loop
+    function engineLoop() {
+      if (!isPlaying) {
+        const delta = targetFrameIndex - currentFrameIndex;
+        if (Math.abs(delta) > 0.01) {
+          currentFrameIndex += delta * 0.22;
+          paintFrame();
+        }
+      }
+      requestAnimationFrame(engineLoop);
+    }
+
+    // Scroll Observer
+    window.addEventListener('scroll', () => {
+      // 1. Barra de Leitura Global
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+      if (progressLine) progressLine.style.width = `${progress}%`;
+
+      // 2. Trajetória no Hero
+      if (!isPlaying) {
+        const trackRect = heroTrack.getBoundingClientRect();
+        const top = trackRect.top;
+        const scrollableHeight = trackRect.height - window.innerHeight;
+
+        if (top <= 0 && top >= -scrollableHeight) {
+          const frac = Math.abs(top) / scrollableHeight;
+          targetFrameIndex = Math.min(TOTAL_FRAMES - 1, Math.max(0, frac * (TOTAL_FRAMES - 1)));
+        } else if (top > 0) {
+          targetFrameIndex = 0;
+        } else {
+          targetFrameIndex = TOTAL_FRAMES - 1;
+        }
+      }
+    }, { passive: true });
+
+    // Alternar Reprodução Contínua
+    function togglePlayState() {
+      if (isPlaying) {
+        isPlaying = false;
+        btnTogglePlay.innerText = 'Reproduzir';
+        btnTogglePlay.classList.remove('active');
+        clearInterval(playTimer);
+      } else {
+        isPlaying = true;
+        btnTogglePlay.innerText = 'Pausar';
+        btnTogglePlay.classList.add('active');
+        playTimer = setInterval(() => {
+          currentFrameIndex++;
+          if (currentFrameIndex >= TOTAL_FRAMES) {
+            currentFrameIndex = 0;
+          }
+          targetFrameIndex = currentFrameIndex;
+          paintFrame();
+        }, 1000 / 24);
+      }
+    }
+
+    // Inicialização
+    preloadFrames();
+    engineLoop();
+  </script>
+</body>
+</html>
